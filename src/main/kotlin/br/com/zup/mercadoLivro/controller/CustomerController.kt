@@ -15,14 +15,17 @@ import javax.servlet.annotation.HttpMethodConstraint
 @RequestMapping("customers")
 class CustomerController {
 
+    val customers = mutableListOf<CustomerModel>()
+
     @GetMapping
-    fun getCustomer(): CustomerModel {
-        return CustomerModel("1", "Márcio", "marcio@email.com")
+    fun getCustomer(): MutableList<CustomerModel> {
+        return customers
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createCustomer(@RequestBody customer: PostCustomerRequest) {
+        customers.add(CustomerModel("1",customer.name, customer.email))
         println(customer)
     }
 }
