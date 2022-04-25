@@ -25,7 +25,14 @@ class CustomerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createCustomer(@RequestBody customer: PostCustomerRequest) {
-        customers.add(CustomerModel("1",customer.name, customer.email))
+
+        val id = if (customers.isEmpty()){
+            1
+        } else {
+            customers.last().id.toInt() + 1
+        }.toString()
+
+        customers.add(CustomerModel(id,customer.name, customer.email))
         println(customer)
     }
 }
