@@ -1,5 +1,6 @@
 package br.com.zup.mercadoLivro.controller
 
+import br.com.zup.mercadoLivro.controller.request.PostCustomerRequest
 import br.com.zup.mercadoLivro.model.CustomerModel
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +16,7 @@ class CustomerController {
     fun getCustomer(): CustomerModel {
         return CustomerModel("1", "Márcio", "marcio@email.com")
     }@PostMapping
-    fun createCustomer(@RequestBody customer: CustomerModel) {
+    fun createCustomer(@RequestBody customer: PostCustomerRequest) {
         println(customer)
     }
 }
