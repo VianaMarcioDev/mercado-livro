@@ -10,6 +10,6 @@ class CustomerController {
 
     @GetMapping
     fun helloWorld(): String {
-        return "Hello World"
+        return "Customer 1"
     }
 }
